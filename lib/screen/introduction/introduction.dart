@@ -67,7 +67,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
               ),
               Column(
                 children: [
-                  const IndexIndicator(),
+                  IndexIndicator(index: index),
                   Gap(width * .12),
                   index == Introduction_demo.length - 1
                       ? ElevatedButton(
