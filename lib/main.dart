@@ -1,4 +1,4 @@
-import 'package:alegn_pay/screen/introduction/introduction.dart';
+import 'package:alegn_pay/screen/onbording/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'Gordita',
       ),
-      home: const IntroductionScreen(),
+      home: const OnboardScreen(),
     );
   }
 }
