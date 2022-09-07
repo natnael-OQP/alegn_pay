@@ -14,6 +14,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   gap: ^2.0.0
   hexcolor: ^2.0.7
+  fluentui_icons: ^1.0.0
+  smooth_page_indicator: ^1.0.0+2
 
 dev_dependencies:
   flutter_lints: ^2.0.0
