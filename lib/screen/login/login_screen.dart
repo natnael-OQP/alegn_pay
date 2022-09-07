@@ -1,3 +1,5 @@
+import 'package:alegn_pay/screen/login/screen/personal_info.dart';
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -24,7 +26,15 @@ class LoginScreen extends StatelessWidget {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
-          leading: const Icon(Icons.arrow_back),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: const Icon(
+              FluentSystemIcons.ic_fluent_ios_arrow_left_filled,
+              color: Colors.white,
+            ),
+          ),
         ),
         body: Padding(
           padding: EdgeInsets.only(top: width * .03),
@@ -95,7 +105,13 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const PersonalInfo(),
+                              ),
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
                             primary: HexColor("#194BE7"),
                             padding: EdgeInsets.symmetric(
@@ -131,7 +147,13 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: OutlinedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const LoginScreen(),
+                              ),
+                            );
+                          },
                           style: OutlinedButton.styleFrom(
                             padding: EdgeInsets.symmetric(
                               horizontal: width * .05,
