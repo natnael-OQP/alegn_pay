@@ -1,3 +1,4 @@
+import 'package:alegn_pay/screen/login/screen/login_account.dart';
 import 'package:alegn_pay/screen/login/screen/personal_info.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
@@ -150,7 +151,7 @@ class LoginScreen extends StatelessWidget {
                           onPressed: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => const LoginScreen(),
+                                builder: (context) => const LoginAccount(),
                               ),
                             );
                           },
