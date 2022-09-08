@@ -1,3 +1,4 @@
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -20,20 +21,32 @@ class OTPVerification extends StatelessWidget {
         ),
       ),
       child: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: const Icon(
+              FluentSystemIcons.ic_fluent_ios_arrow_left_filled,
+              color: Colors.white,
+            ),
+          ),
+        ),
         backgroundColor: Colors.transparent,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Gap(width * .1),
             Center(
               child: Image.asset(
                 "assets/images/otp-verification.png",
-                height: height * .44,
+                height: height * .435,
                 fit: BoxFit.cover,
               ),
             ),
             Container(
-              height: height * .5,
+              height: height * .45,
               padding: EdgeInsets.all(width * .05),
               decoration: BoxDecoration(
                 color: Colors.white,
