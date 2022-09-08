@@ -1,3 +1,6 @@
+import 'package:alegn_pay/screen/home/home_screen.dart';
+import 'package:alegn_pay/screen/pay/pay_screen.dart';
+import 'package:alegn_pay/screen/setting/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 
@@ -15,6 +18,18 @@ class _NavigationState extends State<Navigation> {
       _selectedIndex = index;
     });
   }
+
+  List Screens = [
+    const HomeScreen(),
+    const Center(
+      child: Text("history"),
+    ),
+    const PayScreen(),
+    const Center(
+      child: Text("repay"),
+    ),
+    const SettingScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +78,7 @@ class _NavigationState extends State<Navigation> {
           ),
         ],
       ),
+      body: Screens[_selectedIndex],
     );
   }
 }

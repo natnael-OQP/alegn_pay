@@ -5,9 +5,15 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class LoginAccount extends StatelessWidget {
+class LoginAccount extends StatefulWidget {
   const LoginAccount({super.key});
 
+  @override
+  State<LoginAccount> createState() => _LoginAccountState();
+}
+
+class _LoginAccountState extends State<LoginAccount> {
+  bool value = false;
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -73,8 +79,12 @@ class LoginAccount extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Checkbox(
-                          value: false,
-                          onChanged: (value) => true,
+                          value: value,
+                          onChanged: (value) {
+                            setState(() {
+                              this.value = value!;
+                            });
+                          },
                         ),
                         Expanded(
                           child: Container(

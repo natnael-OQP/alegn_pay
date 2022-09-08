@@ -16,6 +16,8 @@ dependencies:
   hexcolor: ^2.0.7
   fluentui_icons: ^1.0.0
   smooth_page_indicator: ^1.0.0+2
+  dropdown_button2: ^1.7.2
+  pin_code_fields: ^7.4.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0

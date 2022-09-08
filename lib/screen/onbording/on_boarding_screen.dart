@@ -1,5 +1,4 @@
 import 'package:alegn_pay/screen/login/login_screen.dart';
-import 'package:alegn_pay/screen/onbording/Splash.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -22,10 +21,6 @@ class _OnboardScreenState extends State<OnboardScreen> {
       body: PageView(
         controller: pageController,
         children: [
-          Container(
-            color: HexColor("#194BE7"),
-            child: const SplashScreen(),
-          ),
           Container(
             padding: EdgeInsets.only(
               top: height * .1,

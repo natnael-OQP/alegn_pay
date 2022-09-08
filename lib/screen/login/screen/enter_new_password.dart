@@ -60,62 +60,65 @@ class EnterNewPassword extends StatelessWidget {
                 ),
               ),
               child: Center(
-                child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "Enter new password",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 23,
-                      ),
-                    ),
-                    const Text(
-                      "Enter your new password",
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-                    InputField(
-                      height: height,
-                      width: width,
-                      label: 'Enter Your New Password',
-                      hint: 'Enter Your New Password',
-                    ),
-                    InputField(
-                      height: height,
-                      width: width,
-                      label: 'Confirm Your  password',
-                      hint: 'Confirm Your  password',
-                    ),
-                    Gap(width * .05),
-                    SizedBox(
-                      width: width * .7,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuilderContext) => const Navigation()));
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: HexColor("#194BE7"),
-                          padding: EdgeInsets.symmetric(
-                            horizontal: width * .05,
-                            vertical: width * .04,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(width * .03),
-                          ),
-                        ),
-                        child: const Text(
-                          "VERIFY & PROCEED",
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: Colors.white,
-                          ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Enter new password",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 23,
                         ),
                       ),
-                    ),
-                  ],
+                      const Text(
+                        "Enter your new password",
+                        style: TextStyle(
+                          fontSize: 12,
+                        ),
+                      ),
+                      InputField(
+                        height: height,
+                        width: width,
+                        label: 'Enter Your New Password',
+                        hint: 'Enter Your New Password',
+                      ),
+                      InputField(
+                        height: height,
+                        width: width,
+                        label: 'Confirm Your  password',
+                        hint: 'Confirm Your  password',
+                      ),
+                      Gap(width * .05),
+                      SizedBox(
+                        width: width * .7,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuilderContext) =>
+                                    const Navigation()));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: HexColor("#194BE7"),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: width * .05,
+                              vertical: width * .04,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(width * .03),
+                            ),
+                          ),
+                          child: const Text(
+                            "VERIFY & PROCEED",
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             )

@@ -1,13 +1,27 @@
 import 'package:alegn_pay/screen/login/components/input_field.dart';
 import 'package:alegn_pay/screen/login/screen/account_info.dart';
 import 'package:alegn_pay/screen/login/screen/personal_info.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class WorkInfo extends StatelessWidget {
+class WorkInfo extends StatefulWidget {
   const WorkInfo({super.key});
+
+  @override
+  State<WorkInfo> createState() => _WorkInfoState();
+}
+
+class _WorkInfoState extends State<WorkInfo> {
+  List<String> numberOfMonths = [
+    'Employed',
+    'Self employed',
+    'Employee',
+  ];
+
+  String? selectedStatus;
 
   @override
   Widget build(BuildContext context) {
@@ -114,6 +128,14 @@ class WorkInfo extends StatelessWidget {
                     width: width,
                     label: 'Employment Status',
                     hint: 'Enter Employment Status',
+                    suffixIcon: DropDownMenu(
+                      hint: 'Employment Status',
+                      menuList: numberOfMonths,
+                      selectedItem: selectedStatus,
+                      onChanged: (value) => setState(
+                        () => selectedStatus = value.toString(),
+                      ),
+                    ),
                   ),
                   InputField(
                     height: height,
@@ -234,6 +256,62 @@ class IconContainer extends StatelessWidget {
             fontSize: 13,
           ),
         ),
+      ),
+    );
+  }
+}
+
+class DropDownMenu extends StatelessWidget {
+  const DropDownMenu({
+    Key? key,
+    required this.hint,
+    required this.menuList,
+    this.selectedItem,
+    this.onChanged,
+  }) : super(key: key);
+
+  final String hint;
+  final List<String> menuList;
+  final String? selectedItem;
+  final Function(String?)? onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButtonHideUnderline(
+      child: DropdownButton2(
+        value: selectedItem,
+        hint: Text(
+          hint,
+          style: TextStyle(
+            color: Colors.grey.shade700,
+            letterSpacing: 1,
+          ),
+        ),
+        items: menuList.map((item) {
+          return DropdownMenuItem<String>(
+            value: item,
+            child: Text(
+              item,
+              style: TextStyle(
+                color: Colors.grey.shade700,
+                letterSpacing: 1,
+              ),
+            ),
+          );
+        }).toList(),
+        style: TextStyle(
+          color: Colors.grey.shade700,
+          letterSpacing: 1,
+        ),
+        dropdownDecoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+        ),
+        onChanged: onChanged,
+        buttonHeight: 42,
+        buttonWidth: double.maxFinite,
+        buttonPadding: const EdgeInsets.only(left: 20, right: 10),
+        itemHeight: 40,
       ),
     );
   }

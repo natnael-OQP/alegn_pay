@@ -41,79 +41,87 @@ class ForgotPassword extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Center(
-              child: Image.asset(
-                "assets/images/forgot.png",
-                height: height * .43,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Container(
-              height: height * .45,
-              padding: EdgeInsets.all(width * .07),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(width * .05),
-                  topRight: Radius.circular(width * .05),
+            Expanded(
+              flex: 4,
+              child: Center(
+                child: Image.asset(
+                  "assets/images/forgot.png",
+                  height: height * .43,
+                  fit: BoxFit.cover,
                 ),
               ),
-              child: Center(
-                child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "Forgot password?",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 23,
-                      ),
-                    ),
-                    const Text(
-                      "Don’t worry! It happens. Please enter the phone number associated with your account ",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 14,
-                      ),
-                    ),
-                    InputField(
-                      height: height,
-                      width: width,
-                      label: 'Phone Number',
-                      hint: 'Enter Phone Number',
-                    ),
-                    //
-                    Gap(width * .15),
-                    SizedBox(
-                      width: width * .7,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const OTPVerification(),
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: HexColor("#194BE7"),
-                          padding: EdgeInsets.symmetric(
-                            horizontal: width * .05,
-                            vertical: width * .04,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(width * .03),
-                          ),
-                        ),
-                        child: const Text(
-                          "SUBMIT",
+            ),
+            Expanded(
+              flex: 5,
+              child: Container(
+                padding: EdgeInsets.all(width * .07),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(width * .05),
+                    topRight: Radius.circular(width * .05),
+                  ),
+                ),
+                child: Center(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Forgot password?",
                           style: TextStyle(
-                            fontSize: 13,
-                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 23,
                           ),
                         ),
-                      ),
+                        const Text(
+                          "Don’t worry! It happens. Please enter the phone number associated with your account ",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 14,
+                          ),
+                        ),
+                        InputField(
+                          height: height,
+                          width: width,
+                          label: 'Phone Number',
+                          hint: 'Enter Phone Number',
+                        ),
+                        //
+                        Gap(width * .15),
+                        SizedBox(
+                          width: width * .7,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => const OTPVerification(),
+                                ),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: HexColor("#194BE7"),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: width * .05,
+                                vertical: width * .04,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.circular(width * .03),
+                              ),
+                            ),
+                            child: const Text(
+                              "SUBMIT",
+                              style: TextStyle(
+                                fontSize: 13,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             )

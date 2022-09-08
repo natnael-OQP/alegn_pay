@@ -6,9 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class AccountInfo extends StatelessWidget {
+class AccountInfo extends StatefulWidget {
   const AccountInfo({super.key});
 
+  @override
+  State<AccountInfo> createState() => _AccountInfoState();
+}
+
+class _AccountInfoState extends State<AccountInfo> {
+  bool value = false;
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -47,7 +53,7 @@ class AccountInfo extends StatelessWidget {
                 ),
               ),
               const Text(
-                "Please fill your Work and Legal information's",
+                "Please fill your Account information's",
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w400,
@@ -167,7 +173,11 @@ class AccountInfo extends StatelessWidget {
                     children: [
                       Checkbox(
                         value: false,
-                        onChanged: (value) => true,
+                        onChanged: (value) {
+                          setState(() {
+                            this.value = value!;
+                          });
+                        },
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: width * .01),
