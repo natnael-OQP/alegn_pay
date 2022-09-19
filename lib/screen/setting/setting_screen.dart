@@ -2,6 +2,7 @@ import 'package:alegn_pay/screen/setting/search_form.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
@@ -10,6 +11,7 @@ class SettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+    final box = GetStorage();
 
     return Container(
       decoration: const BoxDecoration(
@@ -79,9 +81,9 @@ class SettingScreen extends StatelessWidget {
                       ),
                       Container(
                         alignment: Alignment.center,
-                        child: const Text(
-                          "Abera Abebe",
-                          style: TextStyle(
+                        child: Text(
+                          box.read("username"),
+                          style: const TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 20,
                           ),
@@ -89,9 +91,9 @@ class SettingScreen extends StatelessWidget {
                       ),
                       Container(
                         alignment: Alignment.center,
-                        child: const Text(
-                          "+251-912-456-678",
-                          style: TextStyle(
+                        child: Text(
+                          "+251 ${(box.read("phoneNumber")).toString().substring(1)}",
+                          style: const TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 12,
                           ),
