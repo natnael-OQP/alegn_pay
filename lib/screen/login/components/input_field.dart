@@ -8,6 +8,9 @@ class InputField extends StatelessWidget {
     required this.hint,
     this.label,
     this.suffixIcon,
+    this.textEditingController,
+    this.type,
+    this.obscure = false,
   }) : super(key: key);
 
   final double height;
@@ -15,6 +18,9 @@ class InputField extends StatelessWidget {
   final String? label;
   final String hint;
   final Widget? suffixIcon;
+  final TextEditingController? textEditingController;
+  final TextInputType? type;
+  final bool obscure;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +28,14 @@ class InputField extends StatelessWidget {
       margin: EdgeInsets.only(top: width * .09),
       height: height * .055,
       child: TextField(
+        controller: textEditingController,
+        keyboardType: type,
         style: const TextStyle(
           fontSize: 15,
           color: Colors.black87,
           fontWeight: FontWeight.w400,
         ),
+        obscureText: obscure,
         readOnly: suffixIcon == null ? false : true,
         decoration: InputDecoration(
           suffixIcon: suffixIcon,
