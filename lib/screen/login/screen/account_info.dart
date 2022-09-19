@@ -95,7 +95,7 @@ class _AccountInfoState extends State<AccountInfo> {
                         Expanded(
                           child: Container(
                             height: 3,
-                            color: Colors.black12,
+                            color: HexColor("#194BE7"),
                           ),
                         ),
                         IconContainer(
@@ -299,7 +299,7 @@ class IconContainer extends StatelessWidget {
         height: 30,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: index == 1 ? HexColor("#194BE7") : Colors.black12,
+          color: index <= 2 ? HexColor("#194BE7") : Colors.black12,
           borderRadius: BorderRadius.circular(30),
         ),
         child: Text(
