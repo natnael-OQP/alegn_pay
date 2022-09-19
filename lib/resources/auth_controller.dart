@@ -6,6 +6,7 @@ class AuthController extends GetxController {
   final email = ''.obs;
   final password = ''.obs;
   final phoneNumber = ''.obs;
+  final isLoading = false.obs;
   // final employmentStatus = ''.obs;
   // final tinNumber = ''.obs;
   // final idNumber = ''.obs;
@@ -15,9 +16,15 @@ class AuthController extends GetxController {
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController loginEmailController = TextEditingController();
+  final TextEditingController loginPasswordController = TextEditingController();
 
   updateUsername(String name) {
     username(name);
+  }
+
+  updateLoading() {
+    isLoading(true);
   }
 
   updateEmail(String name) {
