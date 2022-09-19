@@ -1,19 +1,41 @@
+import 'package:alegn_pay/resources/auth_controller.dart';
+import 'package:alegn_pay/resources/auth_method.dart';
 import 'package:alegn_pay/screen/login/components/input_field.dart';
 import 'package:alegn_pay/screen/login/screen/account_info.dart';
 import 'package:alegn_pay/screen/login/screen/work_info.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class PersonalInfo extends StatelessWidget {
+class PersonalInfo extends StatefulWidget {
   const PersonalInfo({super.key});
+
+  @override
+  State<PersonalInfo> createState() => _PersonalInfoState();
+}
+
+class _PersonalInfoState extends State<PersonalInfo> {
+  final userController = Get.put(AuthController());
+
+  void signUpUser() async {
+    await userController.updateUsername(userController.usernameController.text);
+    String res = await AuthMethods().signUpUser(
+      email: userController.emailController.text,
+      password: userController.passwordController.text,
+      phoneNumber: userController.phoneNumberController.text,
+      username: userController.usernameController.text,
+    );
+    if (res == "success") {
+      Get.to(() => const WorkInfo());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -110,28 +132,35 @@ class PersonalInfo extends StatelessWidget {
               Column(
                 children: [
                   InputField(
+                    textEditingController: userController.usernameController,
                     height: height,
                     width: width,
                     label: 'Full Name',
                     hint: 'Enter Your Full Name',
                   ),
                   InputField(
+                    textEditingController: userController.phoneNumberController,
+                    type: TextInputType.number,
                     height: height,
                     width: width,
                     label: 'Phone Number',
                     hint: '0911290838',
                   ),
                   InputField(
+                    textEditingController: userController.emailController,
+                    type: TextInputType.emailAddress,
                     height: height,
                     width: width,
                     label: 'Email',
                     hint: 'Something@gmail.com',
                   ),
                   InputField(
+                    textEditingController: userController.passwordController,
                     height: height,
                     width: width,
                     label: 'Password',
                     hint: '**********',
+                    obscure: true,
                   ),
                 ],
               ),
@@ -143,13 +172,7 @@ class PersonalInfo extends StatelessWidget {
                     child: SizedBox(
                       width: width * .7,
                       child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const WorkInfo(),
-                            ),
-                          );
-                        },
+                        onPressed: signUpUser,
                         style: ElevatedButton.styleFrom(
                           primary: HexColor("#194BE7"),
                           padding: EdgeInsets.symmetric(
