@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "723237859964",
+    "project_id": "alegn-pay",
+    "storage_bucket": "alegn-pay.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723237859964:android:2b812c1f5391d46f72cff9",
+        "android_client_info": {
+          "package_name": "com.example.alegn_pay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723237859964-fiocamk71rc1habeaiqc4l07lgbhndq5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBl2WADJIjgEwsCwreMBkJSGOu0BzBlgSQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "723237859964-fiocamk71rc1habeaiqc4l07lgbhndq5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
