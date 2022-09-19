@@ -7,6 +7,7 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class PersonalInfo extends StatefulWidget {
@@ -18,17 +19,21 @@ class PersonalInfo extends StatefulWidget {
 
 class _PersonalInfoState extends State<PersonalInfo> {
   final userController = Get.put(AuthController());
+  final box = GetStorage();
 
   void signUpUser() async {
-    await userController.updateUsername(userController.usernameController.text);
-    String res = await AuthMethods().signUpUser(
-      email: userController.emailController.text,
-      password: userController.passwordController.text,
-      phoneNumber: userController.phoneNumberController.text,
-      username: userController.usernameController.text,
-    );
-    if (res == "success") {
+    if (box.read("username") != null) {
       Get.to(() => const WorkInfo());
+    } else {
+      String res = await AuthMethods().signUpUser(
+        email: userController.emailController.text,
+        password: userController.passwordController.text,
+        phoneNumber: userController.phoneNumberController.text,
+        username: userController.usernameController.text,
+      );
+      if (res == "success") {
+        Get.to(() => const WorkInfo());
+      }
     }
   }
 
