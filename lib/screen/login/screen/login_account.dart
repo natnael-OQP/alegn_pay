@@ -1,8 +1,13 @@
+import 'package:alegn_pay/navigation/navigation.dart';
+import 'package:alegn_pay/resources/auth_controller.dart';
+import 'package:alegn_pay/resources/auth_method.dart';
 import 'package:alegn_pay/screen/login/components/input_field.dart';
 import 'package:alegn_pay/screen/login/screen/forgot_password.dart';
 import 'package:alegn_pay/screen/login/screen/personal_info.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class LoginAccount extends StatefulWidget {
@@ -14,6 +19,26 @@ class LoginAccount extends StatefulWidget {
 
 class _LoginAccountState extends State<LoginAccount> {
   bool value = false;
+  final box = GetStorage();
+  final userController = Get.put(AuthController());
+
+  void signInUser() async {
+    if (box.read("username") != null) {
+      Get.to(() => const Navigation());
+    } else {
+      await userController
+          .updateUsername(userController.usernameController.text);
+      String res = await AuthMethods().signIn(
+        email: userController.loginEmailController.text,
+        password: userController.loginPasswordController.text,
+      );
+      print(res);
+      if (res == "success") {
+        Get.to(() => const Navigation());
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -64,16 +89,22 @@ class _LoginAccountState extends State<LoginAccount> {
                       ),
                     ),
                     InputField(
+                      textEditingController:
+                          userController.loginEmailController,
+                      type: TextInputType.emailAddress,
                       height: height,
                       width: width,
-                      label: 'Full Name',
-                      hint: 'Enter Full Name',
+                      label: 'Email',
+                      hint: 'Something@gmail.com',
                     ),
                     InputField(
+                      textEditingController:
+                          userController.loginPasswordController,
                       height: height,
                       width: width,
-                      label: 'Phone Number',
-                      hint: 'Enter Phone Number',
+                      label: 'Password',
+                      hint: '**********',
+                      obscure: true,
                     ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -131,13 +162,7 @@ class _LoginAccountState extends State<LoginAccount> {
                       child: SizedBox(
                         width: width * .7,
                         child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const ForgotPassword(),
-                              ),
-                            );
-                          },
+                          onPressed: signInUser,
                           style: ElevatedButton.styleFrom(
                             primary: HexColor("#194BE7"),
                             padding: EdgeInsets.symmetric(
