@@ -1,6 +1,9 @@
+import 'package:alegn_pay/navigation/navigation.dart';
 import 'package:alegn_pay/screen/onbording/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -10,18 +13,25 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final box = GetStorage();
+
   @override
   void initState() {
+    // box.erase();
     navigateToOnboardScreen();
     super.initState();
   }
 
   navigateToOnboardScreen() async {
-    await Future.delayed(const Duration(seconds: 3));
-    if (!mounted) return;
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => const OnboardScreen()),
-    );
+    if (box.read("username") != null) {
+      await Future.delayed(const Duration(seconds: 3));
+      if (!mounted) return;
+      Get.to(() => const Navigation());
+    } else {
+      await Future.delayed(const Duration(seconds: 3));
+      if (!mounted) return;
+      Get.to(() => const OnboardScreen());
+    }
   }
 
   @override
