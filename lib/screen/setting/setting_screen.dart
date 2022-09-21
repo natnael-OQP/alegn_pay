@@ -26,15 +26,16 @@ class SettingScreen extends StatelessWidget {
           appBar: AppBar(
             elevation: 0,
             backgroundColor: Colors.transparent,
-            leading: IconButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              icon: const Icon(
-                FluentSystemIcons.ic_fluent_ios_arrow_left_filled,
-                color: Colors.white,
-              ),
-            ),
+            automaticallyImplyLeading: false,
+            // leading: IconButton(
+            //   onPressed: () {
+            //     Get.to(() => const Navigation());
+            //   },
+            //   icon: const Icon(
+            //     FluentSystemIcons.ic_fluent_ios_arrow_left_filled,
+            //     color: Colors.white,
+            //   ),
+            // ),
           ),
           backgroundColor: Colors.transparent,
           body: Stack(
