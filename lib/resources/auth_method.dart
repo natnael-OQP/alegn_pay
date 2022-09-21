@@ -63,19 +63,22 @@ class AuthMethods {
         email: email,
         password: password,
       );
-      print("************************************************");
-      final DocumentReference document =
-          _db.collection("users").doc(cred.user!.uid);
+      // read user from database
+      var collection = _db.collection('users');
+      var docSnapshot = await collection.doc(cred.user!.uid).get();
+      if (docSnapshot.exists) {
+        Map<String, dynamic>? data = docSnapshot.data();
+        var username = data?['username'];
+        var email = data?['email'];
+        var phoneNumber = data?['phoneNumber'];
 
-      await document.get().then<dynamic>((DocumentSnapshot snapshot) async {
-        Object data = snapshot.data;
-      });
-      // store data locally
-      // box.write("uid", credential.user!.uid);
-      // box.write("username", username);
-      // box.write("email", email);
-      // box.write("phoneNumber", phoneNumber);
-
+        // store user info locally
+        box.write("uid", cred.user!.uid);
+        box.write("username", username);
+        box.write("email", email);
+        box.write("phoneNumber", phoneNumber);
+        res = "success";
+      }
     } catch (err) {
       res = err.toString();
     }
