@@ -1,9 +1,13 @@
+import 'package:alegn_pay/navigation/navigation.dart';
 import 'package:alegn_pay/screen/login/components/input_field.dart';
 import 'package:alegn_pay/screen/login/screen/drop_down_menu.dart';
 import 'package:alegn_pay/screen/pay/screen/paid_successfully.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class MerchantScreen extends StatefulWidget {
@@ -23,6 +27,22 @@ class _MerchantScreenState extends State<MerchantScreen> {
   ];
 
   String? selectedMonth;
+  var getResult = 'Unknown';
+
+  void scanQR() async {
+    try {
+      final qrCode = await FlutterBarcodeScanner.scanBarcode(
+          "#ff6666", "Cancel", true, ScanMode.QR);
+      if (!mounted) return;
+      setState(() {
+        getResult = qrCode;
+      });
+
+      Get.to(() => const PaidSuccessfully());
+    } on PlatformException {
+      getResult = "Failed to scan QR code.";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +54,10 @@ class _MerchantScreenState extends State<MerchantScreen> {
         elevation: 1,
         backgroundColor: Colors.white,
         titleSpacing: 0,
+        automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Get.to(() => const Navigation());
           },
           icon: const Icon(
             FluentSystemIcons.ic_fluent_ios_arrow_left_filled,
@@ -148,11 +169,7 @@ class _MerchantScreenState extends State<MerchantScreen> {
                     width: width * .4,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const PaidSuccessfully(),
-                          ),
-                        );
+                        scanQR();
                       },
                       style: ElevatedButton.styleFrom(
                         primary: HexColor("#2CA66C"),
