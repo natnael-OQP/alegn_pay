@@ -32,7 +32,6 @@ class _LoginAccountState extends State<LoginAccount> {
         email: userController.loginEmailController.text,
         password: userController.loginPasswordController.text,
       );
-      print(res);
       if (res == "success") {
         Get.to(() => const Navigation());
       }
