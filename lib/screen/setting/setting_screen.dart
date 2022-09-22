@@ -23,206 +23,203 @@ class SettingScreen extends StatelessWidget {
         ),
       ),
       child: Scaffold(
-          appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            automaticallyImplyLeading: false,
-            // leading: IconButton(
-            //   onPressed: () {
-            //     Get.to(() => const Navigation());
-            //   },
-            //   icon: const Icon(
-            //     FluentSystemIcons.ic_fluent_ios_arrow_left_filled,
-            //     color: Colors.white,
-            //   ),
-            // ),
-          ),
           backgroundColor: Colors.transparent,
-          body: Stack(
-            children: [
-              Positioned(
-                top: height * .15,
-                left: 0,
-                right: 0,
-                child: Container(
-                  height: height * .8,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(width * .05),
-                      topRight: Radius.circular(width * .05),
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Stack(children: [
+                  Container(
+                    margin: EdgeInsets.only(top: height * .16),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(width * .05),
+                        topRight: Radius.circular(width * .05),
+                      ),
+                    ),
+                    child: Positioned(
+                      top: -height * .2,
+                      left: 0,
+                      right: 0,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          left: width * .05,
+                          right: width * .05,
+                          bottom: width * .05,
+                        ),
+                        child: Column(
+                          children: [
+                            Positioned(
+                              top: -height * .15,
+                              left: 0,
+                              right: 0,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: width * .25,
+                                    width: width * .25,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius:
+                                          BorderRadius.circular(width * .2),
+                                    ),
+                                    child: Image.asset(
+                                      "assets/images/otp-verification.png",
+                                      alignment: const Alignment(-5.0, -5.0),
+                                      width: width * .4,
+                                      height: width * .4,
+                                    ),
+                                  ),
+                                  Container(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      box.read("username"),
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "+251 ${(box.read("phoneNumber")).toString().substring(1)}",
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Gap(width * .05),
+                            const SearchForm(),
+                            Gap(width * .05),
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              child: const Text(
+                                "PROFILE",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            SettingCard(
+                              width: width,
+                              image: "assets/icons/account.png",
+                              title: "Account detail",
+                            ),
+                            SettingCard(
+                              width: width,
+                              image: "assets/icons/document.png",
+                              title: "Document",
+                            ),
+                            Gap(width * .05),
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              child: const Text(
+                                "BANK DETAIL",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            SettingCard(
+                              width: width,
+                              image: "assets/icons/document.png",
+                              title: "Bank Account",
+                            ),
+                            Gap(width * .05),
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              child: const Text(
+                                "NOTIFICATION",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            SettingRadioCard(
+                              width: width,
+                              image: "assets/icons/activities.png",
+                              title: "Activities notifications",
+                              desc:
+                                  "Payment Success, Failed and other activities",
+                            ),
+                            SettingRadioCard(
+                              width: width,
+                              image: "assets/icons/sms.png",
+                              title: "SMS notifications ",
+                            ),
+                            Gap(width * .05),
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              child: const Text(
+                                "SECURITY",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            SettingCard(
+                              width: width,
+                              image: "assets/icons/password.png",
+                              title: "Change password",
+                            ),
+                            SettingCard(
+                              width: width,
+                              image: "assets/icons/privacy.png",
+                              title: "Privacy",
+                            ),
+                            Gap(width * .05),
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              child: const Text(
+                                "DISPLAY",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            SettingRadioCard(
+                              width: width,
+                              image: "assets/icons/dark.png",
+                              title: "Dark mode",
+                            ),
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              child: const Text(
+                                "SUPPORT",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            SettingCard(
+                              width: width,
+                              image: "assets/icons/help.png",
+                              title: "Help & Support",
+                            ),
+                            SettingCard(
+                              width: width,
+                              image: "assets/icons/about.png",
+                              title: "About",
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-              Positioned(
-                top: height * .15 - 40,
-                left: 0,
-                right: 0,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    left: width * .05,
-                    right: width * .05,
-                    bottom: width * .05,
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: width * .25,
-                        width: width * .25,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(width * .2),
-                        ),
-                        child: Image.asset(
-                          "assets/images/otp-verification.png",
-                          width: width * .4,
-                          height: width * .4,
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.center,
-                        child: Text(
-                          box.read("username"),
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "+251 ${(box.read("phoneNumber")).toString().substring(1)}",
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                      Gap(width * .05),
-                      const SearchForm(),
-                      Gap(width * .05),
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        child: const Text(
-                          "PROFILE",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                      SettingCard(
-                        width: width,
-                        image: "assets/icons/account.png",
-                        title: "Account detail",
-                      ),
-                      SettingCard(
-                        width: width,
-                        image: "assets/icons/document.png",
-                        title: "Document",
-                      ),
-                      Gap(width * .05),
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        child: const Text(
-                          "BANK DETAIL",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                      SettingCard(
-                        width: width,
-                        image: "assets/icons/document.png",
-                        title: "Bank Account",
-                      ),
-                      Gap(width * .05),
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        child: const Text(
-                          "NOTIFICATION",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                      SettingRadioCard(
-                        width: width,
-                        image: "assets/icons/activities.png",
-                        title: "Activities notifications",
-                        desc: "Payment Success, Failed and other activities",
-                      ),
-                      SettingRadioCard(
-                        width: width,
-                        image: "assets/icons/sms.png",
-                        title: "SMS notifications ",
-                      ),
-                      Gap(width * .05),
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        child: const Text(
-                          "SECURITY",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                      SettingCard(
-                        width: width,
-                        image: "assets/icons/password.png",
-                        title: "Change password",
-                      ),
-                      SettingCard(
-                        width: width,
-                        image: "assets/icons/privacy.png",
-                        title: "Privacy",
-                      ),
-                      Gap(width * .05),
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        child: const Text(
-                          "DISPLAY",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                      SettingRadioCard(
-                        width: width,
-                        image: "assets/icons/dark.png",
-                        title: "Dark mode",
-                      ),
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        child: const Text(
-                          "SUPPORT",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                      SettingCard(
-                        width: width,
-                        image: "assets/icons/help.png",
-                        title: "Help & Support",
-                      ),
-                      SettingCard(
-                        width: width,
-                        image: "assets/icons/about.png",
-                        title: "About",
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
+                ]),
+              ],
+            ),
           )),
     );
   }
